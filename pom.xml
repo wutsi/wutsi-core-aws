@@ -10,7 +10,7 @@
 
     <properties>
         <!-- Library versions - in ALPHABETICAL ORDER-->
-        <aws.version>1.11.401</aws.version>
+        <aws.version>1.11.750</aws.version>
         <junit.version>4.12</junit.version>
         <kotlin.version>1.2.41</kotlin.version>
         <mockito.version>2.15.0</mockito.version>
@@ -24,12 +24,14 @@
             <groupId>com.wutsi</groupId>
             <artifactId>wutsi-core</artifactId>
             <version>${wutsi-core.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk</artifactId>
             <version>${aws.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -45,18 +47,12 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -88,7 +84,7 @@
         <repository>
             <id>github</id>
             <name>GitHub Maven Packages</name>
-            <url>https://maven.pkg.github.com/wutsi/wutsi-core</url>
+            <url>https://maven.pkg.github.com/wutsi/wutsi-core-aws</url>
         </repository>
     </distributionManagement>
 
