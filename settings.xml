@@ -14,10 +14,8 @@
                     <releases><enabled>true</enabled></releases>
                     <snapshots><enabled>false</enabled></snapshots>
                 </repository>
-
                 <repository>
                     <id>github-wutsi-core</id>
-                    <name>GitHub Maven Packages</name>
                     <url>https://maven.pkg.github.com/wutsi/wutsi-core</url>
                 </repository>
             </repositories>
