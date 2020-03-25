@@ -36,11 +36,10 @@ class AwsStorageServiceTest {
     @Test
     fun store() {
         val content = ByteArrayInputStream("hello".toByteArray())
-        val result = storage.store(100, "document", "test.txt", content, "text/plain")
+        val result = storage.store("document/test.txt", content, "text/plain")
 
         Assert.assertNotNull(result)
-        Assert.assertTrue(result.startsWith("https://s3.amazonaws.com/test/100/document/"))
-        Assert.assertTrue(result.endsWith("/test.txt"))
+        Assert.assertEquals("https://s3.amazonaws.com/test/document/test.txt", result)
 
         val request: ArgumentCaptor<PutObjectRequest> = ArgumentCaptor.forClass(PutObjectRequest::class.java)
         Mockito.verify(s3).putObject(request.capture())
@@ -52,7 +51,7 @@ class AwsStorageServiceTest {
         Mockito.`when`(s3.putObject(ArgumentMatchers.any())).thenThrow(RuntimeException::class.java)
 
         val content = ByteArrayInputStream("hello".toByteArray())
-        storage.store(100, "document", "test.txt", content, "text/plain")
+        storage.store("document/test.txt", content, "text/plain")
     }
 
     @Test

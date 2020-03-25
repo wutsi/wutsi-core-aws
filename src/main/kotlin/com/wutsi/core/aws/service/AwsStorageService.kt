@@ -18,11 +18,10 @@ open class AwsStorageService(
     lateinit var bucket: String
 
     @Throws(IOException::class)
-    override fun store(storeId: Long, folder: String, filename: String, content: InputStream, contentType: String?): String {
+    override fun store(path: String, content: InputStream, contentType: String?): String {
         val meta = ObjectMetadata()
         meta.contentType = contentType
 
-        val path = path(storeId, folder, filename);
         val request = PutObjectRequest(bucket, path, content, meta)
         try {
             s3.putObject(request)
@@ -46,13 +45,4 @@ open class AwsStorageService(
             throw IOException(String.format("Unable to store to s3://%s/%s", bucket, path), e)
         }
     }
-
-    private fun path(storeId: Long, folder: String, filename: String) = String.format(
-                "%s/%s/%s/%s",
-                storeId,
-                folder,
-                UUID.randomUUID().toString(),
-                URLEncoder.encode(filename, "utf-8")
-    )
-
 }
