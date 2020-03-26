@@ -6,7 +6,7 @@
 
     <groupId>com.wutsi</groupId>
     <artifactId>wutsi-core-aws</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <properties>
         <!-- Library versions - in ALPHABETICAL ORDER-->
@@ -16,7 +16,7 @@
         <mockito.version>2.15.0</mockito.version>
         <slf4j.version>1.7.29</slf4j.version>
         <spring.version>5.1.11.RELEASE</spring.version>
-        <wutsi-core.version>1.0.7</wutsi-core.version>
+        <wutsi-core.version>1.0.8</wutsi-core.version>
     </properties>
 
     <dependencies>

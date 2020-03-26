@@ -5,7 +5,6 @@ import com.amazonaws.services.s3.model.GetObjectRequest
 import com.amazonaws.services.s3.model.PutObjectRequest
 import com.amazonaws.services.s3.model.S3Object
 import com.amazonaws.services.s3.model.S3ObjectInputStream
-import com.wutsi.api.storage.service.AwsStorageService
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test

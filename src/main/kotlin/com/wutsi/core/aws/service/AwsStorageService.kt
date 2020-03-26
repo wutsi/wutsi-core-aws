@@ -1,15 +1,14 @@
-package com.wutsi.api.storage.service
+package com.wutsi.core.aws.service
 
 import com.amazonaws.services.s3.AmazonS3
 import com.amazonaws.services.s3.model.GetObjectRequest
 import com.amazonaws.services.s3.model.ObjectMetadata
 import com.amazonaws.services.s3.model.PutObjectRequest
+import com.wutsi.core.service.StorageService
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 import java.net.URL
-import java.net.URLEncoder
-import java.util.UUID
 
 
 open class AwsStorageService(
