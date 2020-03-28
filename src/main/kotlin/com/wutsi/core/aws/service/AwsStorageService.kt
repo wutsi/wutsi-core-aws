@@ -4,7 +4,7 @@ import com.amazonaws.services.s3.AmazonS3
 import com.amazonaws.services.s3.model.GetObjectRequest
 import com.amazonaws.services.s3.model.ObjectMetadata
 import com.amazonaws.services.s3.model.PutObjectRequest
-import com.wutsi.core.service.StorageService
+import com.wutsi.core.storage.StorageService
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
