@@ -12,6 +12,17 @@ Here are the problems this library solve:
   - [S3 Health check](https://github.com/wutsi/wutsi-core-aws/blob/master/src/main/kotlin/com/wutsi/core/aws/health/S3HealthIndicator.kt)
 - How to manage file from S3. See [S3StorageService](https://github.com/wutsi/wutsi-core-aws/blob/master/src/main/kotlin/com/wutsi/core/aws/service/AwsStorageService.kt)
  
+# Usage
+```xml
+<dependency>
+    <groupId>com.wutsi</groupId>
+    <artifactId>wutsi-core-aws</artifactId>
+    <version>[LATEST VERSION]</version>
+</dependency>
+```
+
+See package details [here](https://github.com/wutsi/wutsi-core-aws/packages)
+
 # Dependencies
 - com.amazonawsaws-java-sdk
 - com.wutsi.wusti-core (scope: provided)
