@@ -8,9 +8,9 @@ This is a library is an extension of [wutsi-core](https://github.com/wutsi/wutsi
 
 # Features
 Here are the problems this library solve:
-- Springboot AWS health checks:
+- How to integrate Springboot health checks for AWS services?
   - [S3 Health check](https://github.com/wutsi/wutsi-core-aws/blob/master/src/main/kotlin/com/wutsi/core/aws/health/S3HealthIndicator.kt)
-- How to manage file from S3. See [AwsStorageService](https://github.com/wutsi/wutsi-core-aws/blob/master/src/main/kotlin/com/wutsi/core/aws/service/AwsStorageService.kt)
+- How to manage file from S3. See [S3StorageService](https://github.com/wutsi/wutsi-core-aws/blob/master/src/main/kotlin/com/wutsi/core/aws/service/AwsStorageService.kt)
  
 # Dependencies
 - com.amazonawsaws-java-sdk
