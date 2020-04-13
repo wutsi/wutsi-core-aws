@@ -6,7 +6,7 @@
 
     <groupId>com.wutsi</groupId>
     <artifactId>wutsi-core-aws</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
 
     <properties>
         <jacoco.threshold.line>0.99</jacoco.threshold.line>
@@ -20,7 +20,7 @@
         <slf4j.version>1.7.29</slf4j.version>
         <spring.version>5.1.11.RELEASE</spring.version>
 
-        <wutsi-core.version>1.0.9</wutsi-core.version>
+        <wutsi-core.version>1.2.0</wutsi-core.version>
     </properties>
 
     <dependencies>
@@ -89,6 +89,13 @@
             <url>https://maven.pkg.github.com/wutsi/wutsi-core-aws</url>
         </repository>
     </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>github-wutsi-core</id>
+            <url>https://maven.pkg.github.com/wutsi/wutsi-core</url>
+        </repository>
+    </repositories>
 
 
     <build>

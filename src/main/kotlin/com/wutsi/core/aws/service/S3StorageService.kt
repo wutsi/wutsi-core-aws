@@ -11,10 +11,10 @@ import java.io.OutputStream
 import java.net.URL
 
 
-open class AwsStorageService(
-        private val s3: AmazonS3
+open class S3StorageService(
+        private val s3: AmazonS3,
+        private val bucket: String
 ) : StorageService {
-    lateinit var bucket: String
 
     @Throws(IOException::class)
     override fun store(path: String, content: InputStream, contentType: String?): String {

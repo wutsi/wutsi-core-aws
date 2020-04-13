@@ -11,7 +11,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.ArgumentCaptor
 import org.mockito.ArgumentMatchers
-import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
@@ -20,16 +19,15 @@ import java.io.ByteArrayOutputStream
 import java.io.IOException
 
 @RunWith(MockitoJUnitRunner::class)
-class AwsStorageServiceTest {
+class S3StorageServiceTest {
     @Mock
     private lateinit var s3: AmazonS3
 
-    @InjectMocks
-    private lateinit var storage: AwsStorageService
+    private lateinit var storage: S3StorageService
 
     @Before
     fun setUp() {
-        storage.bucket = "test"
+        storage = S3StorageService(s3, "test")
     }
 
     @Test
@@ -42,7 +40,7 @@ class AwsStorageServiceTest {
 
         val request: ArgumentCaptor<PutObjectRequest> = ArgumentCaptor.forClass(PutObjectRequest::class.java)
         Mockito.verify(s3).putObject(request.capture())
-        Assert.assertEquals(request.value.bucketName, storage.bucket)
+        Assert.assertEquals(request.value.bucketName, "test")
     }
 
     @Test(expected = IOException::class)
