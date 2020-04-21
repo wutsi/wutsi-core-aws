@@ -24,7 +24,7 @@ Here are the problems this library solve:
 See package details [here](https://github.com/wutsi/wutsi-core-aws/packages)
 
 # Dependencies
-- com.amazonawsaws-java-sdk
+- com.amazonawsaws-java-sdk-s3
 - com.wutsi.wusti-core (scope: provided)
 - org.springframework.boot.spring-boot-starter-actuator (scope: provided)
 - org.springframework.spring-context (scope: provided)
