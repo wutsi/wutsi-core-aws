@@ -6,7 +6,7 @@
 
     <groupId>com.wutsi</groupId>
     <artifactId>wutsi-core-aws</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
 
     <properties>
         <jacoco.threshold.line>0.99</jacoco.threshold.line>
@@ -20,13 +20,13 @@
         <slf4j.version>1.7.29</slf4j.version>
         <spring.version>5.1.11.RELEASE</spring.version>
 
-        <wutsi-core.version>1.2.0</wutsi-core.version>
+        <wutsi-core.version>1.7.0</wutsi-core.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk</artifactId>
+            <artifactId>aws-java-sdk-s3</artifactId>
             <version>${aws.version}</version>
         </dependency>
         
