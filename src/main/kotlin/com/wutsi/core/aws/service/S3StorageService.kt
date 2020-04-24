@@ -2,6 +2,7 @@ package com.wutsi.core.aws.service
 
 import com.amazonaws.services.s3.AmazonS3
 import com.amazonaws.services.s3.model.GetObjectRequest
+import com.amazonaws.services.s3.model.ListObjectsRequest
 import com.amazonaws.services.s3.model.ObjectMetadata
 import com.amazonaws.services.s3.model.PutObjectRequest
 import com.wutsi.core.storage.StorageService
@@ -46,7 +47,10 @@ open class S3StorageService(
     }
 
     override fun visit(path: String, visitor: StorageVisitor) {
-        val listings = s3.listObjects(path)
+        val request = ListObjectsRequest()
+        request.bucketName = bucket
+        request.prefix = path
+        val listings = s3.listObjects(request)
         listings.objectSummaries.forEach { visitor.visit(toURL(it.key)) }
     }
 
