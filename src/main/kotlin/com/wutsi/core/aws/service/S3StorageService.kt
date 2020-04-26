@@ -19,9 +19,14 @@ open class S3StorageService(
 ) : StorageService {
 
     @Throws(IOException::class)
-    override fun store(path: String, content: InputStream, contentType: String?): URL {
+    override fun store(path: String, content: InputStream, contentType: String?, ttlSeconds: Int?): URL {
         val meta = ObjectMetadata()
-        meta.contentType = contentType
+        if (contentType != null) {
+            meta.contentType = contentType
+        }
+        if (ttlSeconds != null){
+            meta.cacheControl = "max-age=31536000, must-revalidate"
+        }
 
         val request = PutObjectRequest(bucket, path, content, meta)
         try {

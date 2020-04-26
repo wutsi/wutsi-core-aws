@@ -9,7 +9,10 @@ import com.amazonaws.services.s3.model.S3Object
 import com.amazonaws.services.s3.model.S3ObjectInputStream
 import com.amazonaws.services.s3.model.S3ObjectSummary
 import com.wutsi.core.storage.StorageVisitor
-import org.junit.Assert
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -40,14 +43,42 @@ class S3StorageServiceTest {
     @Test
     fun store() {
         val content = ByteArrayInputStream("hello".toByteArray())
-        val result = storage.store("document/test.txt", content, "text/plain")
+        val result = storage.store("document/test.txt", content, "text/plain", 31536000)
 
-        Assert.assertNotNull(result)
-        Assert.assertEquals(URL("https://s3.amazonaws.com/test/document/test.txt"), result)
+        assertNotNull(result)
+        assertEquals(URL("https://s3.amazonaws.com/test/document/test.txt"), result)
 
         val request: ArgumentCaptor<PutObjectRequest> = ArgumentCaptor.forClass(PutObjectRequest::class.java)
         Mockito.verify(s3).putObject(request.capture())
-        Assert.assertEquals(request.value.bucketName, "test")
+        assertEquals(request.value.bucketName, "test")
+        assertEquals(request.value.metadata.cacheControl, "max-age=31536000, must-revalidate")
+        assertEquals(request.value.metadata.contentType, "text/plain")
+    }
+
+    @Test
+    fun storeNoContentType() {
+        val content = ByteArrayInputStream("hello".toByteArray())
+        val result = storage.store("document/test.txt", content, null, 31536000)
+
+        assertNotNull(result)
+        assertEquals(URL("https://s3.amazonaws.com/test/document/test.txt"), result)
+
+        val request: ArgumentCaptor<PutObjectRequest> = ArgumentCaptor.forClass(PutObjectRequest::class.java)
+        Mockito.verify(s3).putObject(request.capture())
+        assertNull(request.value.metadata.contentType)
+    }
+
+    @Test
+    fun storeNoTTL() {
+        val content = ByteArrayInputStream("hello".toByteArray())
+        val result = storage.store("document/test.txt", content, "text/plain", null)
+
+        assertNotNull(result)
+        assertEquals(URL("https://s3.amazonaws.com/test/document/test.txt"), result)
+
+        val request: ArgumentCaptor<PutObjectRequest> = ArgumentCaptor.forClass(PutObjectRequest::class.java)
+        Mockito.verify(s3).putObject(request.capture())
+        assertNull(request.value.metadata.cacheControl)
     }
 
     @Test(expected = IOException::class)
@@ -73,8 +104,8 @@ class S3StorageServiceTest {
 
         val request: ArgumentCaptor<GetObjectRequest> = ArgumentCaptor.forClass(GetObjectRequest::class.java)
         Mockito.verify(s3).getObject(request.capture())
-        Assert.assertEquals(request.value.bucketName, "test")
-        Assert.assertEquals(request.value.key, "100/document/203920392/toto.txt")
+        assertEquals(request.value.bucketName, "test")
+        assertEquals(request.value.key, "100/document/203920392/toto.txt")
 
     }
 
@@ -104,11 +135,11 @@ class S3StorageServiceTest {
         val baseUrl = "https://s3.amazonaws.com/test"
 
         storage.visit("a", visitor)
-        Assert.assertEquals(4, urls.size)
-        Assert.assertTrue(urls.contains(URL("$baseUrl/a/file-a1.txt")))
-        Assert.assertTrue(urls.contains(URL("$baseUrl/a/file-a2.txt")))
-        Assert.assertTrue(urls.contains(URL("$baseUrl/a/b/file-ab1.txt")))
-        Assert.assertTrue(urls.contains(URL("$baseUrl/a/b/c/file-abc1.txt")))
+        assertEquals(4, urls.size)
+        assertTrue(urls.contains(URL("$baseUrl/a/file-a1.txt")))
+        assertTrue(urls.contains(URL("$baseUrl/a/file-a2.txt")))
+        assertTrue(urls.contains(URL("$baseUrl/a/b/file-ab1.txt")))
+        assertTrue(urls.contains(URL("$baseUrl/a/b/c/file-abc1.txt")))
     }
 
     private fun createStorageVisitor(urls: MutableList<URL>) = object: StorageVisitor {
