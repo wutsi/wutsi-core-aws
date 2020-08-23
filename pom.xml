@@ -6,11 +6,11 @@
 
     <groupId>com.wutsi</groupId>
     <artifactId>wutsi-core-aws</artifactId>
-    <version>1.5.0</version>
+    <version>1.6.0</version>
 
     <properties>
-        <jacoco.threshold.line>0.99</jacoco.threshold.line>
-        <jacoco.threshold.class>0.99</jacoco.threshold.class>
+        <jacoco.threshold.line>0.80</jacoco.threshold.line>
+        <jacoco.threshold.class>0.80</jacoco.threshold.class>
 
         <!-- Library versions - in ALPHABETICAL ORDER-->
         <aws.version>1.11.750</aws.version>
@@ -19,8 +19,9 @@
         <mockito.version>2.15.0</mockito.version>
         <slf4j.version>1.7.29</slf4j.version>
         <spring.version>5.1.11.RELEASE</spring.version>
+        <xmemcached.version>2.4.5</xmemcached.version>
 
-        <wutsi-core.version>1.8.0</wutsi-core.version>
+        <wutsi-core.version>1.13.0</wutsi-core.version>
     </properties>
 
     <dependencies>
@@ -29,7 +30,12 @@
             <artifactId>aws-java-sdk-s3</artifactId>
             <version>${aws.version}</version>
         </dependency>
-        
+        <dependency>
+            <groupId>com.googlecode.xmemcached</groupId>
+            <artifactId>xmemcached</artifactId>
+            <version>${xmemcached.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>com.wutsi</groupId>
             <artifactId>wutsi-core</artifactId>
