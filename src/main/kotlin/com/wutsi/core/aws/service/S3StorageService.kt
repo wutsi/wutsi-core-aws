@@ -18,6 +18,8 @@ open class S3StorageService(
         private val bucket: String
 ) : StorageService {
 
+    override fun contains(url: URL) =  url.toString().startsWith(urlPrefix())
+
     @Throws(IOException::class)
     override fun store(path: String, content: InputStream, contentType: String?, ttlSeconds: Int?): URL {
         val meta = ObjectMetadata()
@@ -59,5 +61,7 @@ open class S3StorageService(
         listings.objectSummaries.forEach { visitor.visit(toURL(it.key)) }
     }
 
-    private fun toURL(path: String) = URL(String.format("https://s3.amazonaws.com/%s/%s", bucket, path))
+    private fun toURL(path: String) = URL(urlPrefix() + "/$path")
+
+    private fun urlPrefix() = "https://s3.amazonaws.com/$bucket"
 }

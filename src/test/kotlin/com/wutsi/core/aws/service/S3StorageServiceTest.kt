@@ -9,6 +9,7 @@ import com.amazonaws.services.s3.model.S3Object
 import com.amazonaws.services.s3.model.S3ObjectInputStream
 import com.amazonaws.services.s3.model.S3ObjectSummary
 import com.wutsi.core.storage.StorageVisitor
+import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
@@ -39,6 +40,13 @@ class S3StorageServiceTest {
     fun setUp() {
         storage = S3StorageService(s3, "test")
     }
+
+    @Test
+    fun contains() {
+        assertTrue(storage.contains(URL("https://s3.amazonaws.com/test/document/1/2/text.txt")))
+        Assert.assertFalse(storage.contains(URL("https://www.google.com/1/2/text.txt")))
+    }
+
 
     @Test
     fun store() {
