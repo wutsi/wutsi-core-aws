@@ -10,8 +10,13 @@ open class AwsTranslateService(
 ) : TranslateService {
 
     override fun translate(fromLanguage: String?, toLanguage: String, text: String): String {
+        val xtext = text.trim()
+        if (xtext.isEmpty()) {
+            return text
+        }
+
         val request = TranslateTextRequest()
-                .withText(text)
+                .withText(xtext)
                 .withSourceLanguageCode(fromLanguage)
                 .withTargetLanguageCode(toLanguage)
         val result = translate.translateText(request)
