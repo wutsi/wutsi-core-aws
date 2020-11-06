@@ -42,4 +42,33 @@ class AwsTranslateServiceTest {
 
         assertEquals("Foo bar", result)
     }
+
+    @Test
+    fun translateAutoDetect () {
+        `when`(translation.translatedText).thenReturn("Foo bar")
+        `when`(aws.translateText(
+                TranslateTextRequest()
+                        .withSourceLanguageCode("auto")
+                        .withTargetLanguageCode("fr")
+                        .withText("Yo man")
+        )).thenReturn(translation)
+
+        val result = service.translate(null, "fr", "Yo man")
+
+        val request: ArgumentCaptor<TranslateTextRequest> = ArgumentCaptor.forClass(TranslateTextRequest::class.java)
+        verify(aws).translateText(request.capture())
+
+        assertEquals("auto", request.value.sourceLanguageCode)
+        assertEquals("fr", request.value.targetLanguageCode)
+        assertEquals("Yo man", request.value.text)
+
+        assertEquals("Foo bar", result)
+    }
+
+    @Test
+    fun translateEmpty () {
+        val result = service.translate(null, "fr", "  ")
+
+        assertEquals("", result)
+    }
 }
