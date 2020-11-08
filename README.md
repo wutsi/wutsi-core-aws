@@ -21,7 +21,7 @@ Package available [here](https://github.com/wutsi/wutsi-core-aws/packages)
 
 # Features
 ## Storage
-- [S3StorageService](https://github.com/wutsi/wutsi-core-aws/blob/master/src/test/kotlin/com/wutsi/core/aws/service/S3StorageService.kt)
+- [S3StorageService](https://github.com/wutsi/wutsi-core-aws/blob/master/src/main/kotlin/com/wutsi/core/aws/service/S3StorageService.kt)
 implementation of [StorageService](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/storage/StorageService.kt)
 that uses [Amazon S3](https://aws.amazon.com/s3/) for storage.
 - [S3HealthIndicator](https://github.com/wutsi/wutsi-core-aws/blob/master/src/test/kotlin/com/wutsi/core/aws/health/S3HealthIndicator.kt)
@@ -30,7 +30,7 @@ is a Spring Healthcheck Indicator to check access to Amazon S3.
   - `arn:aws:iam::aws:policy/AmazonS3FullAccess`
 
 ## Caching
-- [MemcacheService](https://github.com/wutsi/wutsi-core-aws/blob/master/src/test/kotlin/com/wutsi/core/aws/service/MemcacheService.kt)
+- [MemcacheService](https://github.com/wutsi/wutsi-core-aws/blob/master/src/main/kotlin/com/wutsi/core/aws/service/MemcacheService.kt)
 implementation of [CacheService](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/cache/CacheService.kt)
 that uses Memcached for caching.
 - [MemcacheHealthIndicator](https://github.com/wutsi/wutsi-core-aws/blob/master/src/test/kotlin/com/wutsi/core/aws/health/MemcacheHealthIndicator.kt)
@@ -39,7 +39,7 @@ is a Spring Healthcheck Indicator to check access to Memcached.
   - `arn:aws:iam::aws:policy/AmazonElastiCacheFullAccess`
 
 ## Translation
-- [AwsTranslateService](https://github.com/wutsi/wutsi-core-aws/blob/master/src/test/kotlin/com/wutsi/core/aws/service/AwsTranslateServiceTest.kt)
+- [AwsTranslateService](https://github.com/wutsi/wutsi-core-aws/blob/master/src/main/kotlin/com/wutsi/core/aws/service/AwsTranslateService.kt)
 Implementation of [TranslateService](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/translate/TranslateService.kt)
 based on [Amazon Translate](https://aws.amazon.com/translate/)
 - [AmazonTranslateHealthIndicatorTest](https://github.com/wutsi/wutsi-core-aws/blob/master/src/test/kotlin/com/wutsi/core/aws/health/AmazonTranslateHealthIndicatorTest.kt)
