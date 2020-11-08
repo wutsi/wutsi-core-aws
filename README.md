@@ -22,8 +22,7 @@ Package available [here](https://github.com/wutsi/wutsi-core-aws/packages)
 # Features
 ## Storage
 - [S3StorageService](https://github.com/wutsi/wutsi-core-aws/blob/master/src/main/kotlin/com/wutsi/core/aws/service/S3StorageService.kt)
-implementation of [StorageService](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/storage/StorageService.kt)
-that uses [Amazon S3](https://aws.amazon.com/s3/) for storage.
+implementation of `StorageService` that uses [Amazon S3](https://aws.amazon.com/s3/) for storing/retrieving files.
 - [S3HealthIndicator](https://github.com/wutsi/wutsi-core-aws/blob/master/src/test/kotlin/com/wutsi/core/aws/health/S3HealthIndicator.kt)
 is a Spring Healthcheck Indicator to check access to Amazon S3.
 - AWS policy required:
@@ -31,8 +30,7 @@ is a Spring Healthcheck Indicator to check access to Amazon S3.
 
 ## Caching
 - [MemcacheService](https://github.com/wutsi/wutsi-core-aws/blob/master/src/main/kotlin/com/wutsi/core/aws/service/MemcacheService.kt)
-implementation of [CacheService](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/cache/CacheService.kt)
-that uses Memcached for caching.
+implementation of `CacheService` that uses Memcached for caching data.
 - [MemcacheHealthIndicator](https://github.com/wutsi/wutsi-core-aws/blob/master/src/test/kotlin/com/wutsi/core/aws/health/MemcacheHealthIndicator.kt)
 is a Spring Healthcheck Indicator to check access to Memcached.
 - AWS policy required:
@@ -40,9 +38,8 @@ is a Spring Healthcheck Indicator to check access to Memcached.
 
 ## Translation
 - [AwsTranslateService](https://github.com/wutsi/wutsi-core-aws/blob/master/src/main/kotlin/com/wutsi/core/aws/service/AwsTranslateService.kt)
-Implementation of [TranslateService](https://github.com/wutsi/wutsi-core/blob/master/src/main/kotlin/com/wutsi/core/translate/TranslateService.kt)
-based on [Amazon Translate](https://aws.amazon.com/translate/)
-- [AmazonTranslateHealthIndicatorTest](https://github.com/wutsi/wutsi-core-aws/blob/master/src/test/kotlin/com/wutsi/core/aws/health/AmazonTranslateHealthIndicatorTest.kt)
+Implementation of `TranslateService` that uses [Amazon Translate](https://aws.amazon.com/translate/) for translating text.
+- [AmazonTranslateHealthIndicator](https://github.com/wutsi/wutsi-core-aws/blob/master/src/main/kotlin/com/wutsi/core/aws/health/AmazonTranslateHealthIndicator.kt)
 is a Spring Healthcheck Indicator to check access to Amazon Translate.
 - AWS policy required:
   - `arn:aws:iam::aws:policy/TranslateFullAccess`
